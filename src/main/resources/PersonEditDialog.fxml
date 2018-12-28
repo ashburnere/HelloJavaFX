@@ -4,6 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.DatePicker?>
 
 <AnchorPane prefHeight="270.0" prefWidth="413.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
@@ -49,7 +50,7 @@
 					GridPane.rowIndex="3" />
 				<TextField fx:id="postalCodeField"
 					GridPane.columnIndex="1" GridPane.rowIndex="4" />
-				<TextField fx:id="birthdayField" GridPane.columnIndex="1"
+				<DatePicker fx:id="birthdayField" GridPane.columnIndex="1"
 					GridPane.rowIndex="5" />
 			</children>
 		</GridPane>

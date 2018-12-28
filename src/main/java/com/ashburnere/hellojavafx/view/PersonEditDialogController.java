@@ -5,6 +5,7 @@ import com.ashburnere.hellojavafx.model.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,7 +28,7 @@ public class PersonEditDialogController {
 	@FXML
 	private TextField cityField;
 	@FXML
-	private TextField birthdayField;
+	private DatePicker birthdayField;
 
 	private Stage dialogStage;
 	private Person person;
@@ -63,7 +64,7 @@ public class PersonEditDialogController {
 		// streetField.setText(person.getStreet());
 		// postalCodeField.setText(Integer.toString(person.getPostalCode()));
 		// cityField.setText(person.getCity());
-		birthdayField.setText(DateUtil.format(person.getBirthday()));
+		birthdayField.setValue(person.getBirthday());
 		birthdayField.setPromptText("dd.mm.yyyy");
 	}
 
@@ -87,7 +88,7 @@ public class PersonEditDialogController {
 			// person.setStreet(streetField.getText());
 			// person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
 			// person.setCity(cityField.getText());
-			person.setBirthday(DateUtil.parse(birthdayField.getText()));
+			person.setBirthday(birthdayField.getValue());
 
 			okClicked = true;
 			dialogStage.close();
@@ -116,31 +117,28 @@ public class PersonEditDialogController {
 		if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
 			errorMessage += "No valid last name!\n";
 		}
-		if (streetField.getText() == null || streetField.getText().length() == 0) {
-			errorMessage += "No valid street!\n";
-		}
+		// if (streetField.getText() == null || streetField.getText().length() == 0) {
+		// errorMessage += "No valid street!\n";
+		// }
 
-		if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
-			errorMessage += "No valid postal code!\n";
-		} else {
-			// try to parse the postal code into an int.
-			try {
-				Integer.parseInt(postalCodeField.getText());
-			} catch (NumberFormatException e) {
-				errorMessage += "No valid postal code (must be an integer)!\n";
-			}
-		}
+		// if (postalCodeField.getText() == null || postalCodeField.getText().length()
+		// == 0) {
+		// errorMessage += "No valid postal code!\n";
+		// } else {
+		// // try to parse the postal code into an int.
+		// try {
+		// Integer.parseInt(postalCodeField.getText());
+		// } catch (NumberFormatException e) {
+		// errorMessage += "No valid postal code (must be an integer)!\n";
+		// }
+		// }
 
-		if (cityField.getText() == null || cityField.getText().length() == 0) {
-			errorMessage += "No valid city!\n";
-		}
+		// if (cityField.getText() == null || cityField.getText().length() == 0) {
+		// errorMessage += "No valid city!\n";
+		// }
 
-		if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
+		if (birthdayField.getValue() == null) {
 			errorMessage += "No valid birthday!\n";
-		} else {
-			if (!DateUtil.validDate(birthdayField.getText())) {
-				errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
-			}
 		}
 
 		if (errorMessage.length() == 0) {
